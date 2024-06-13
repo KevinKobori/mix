@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mix/mix.dart';
 
 import '../../../helpers/testing_utils.dart';
+import '../../../helpers/tokens_extensions.dart';
 
 void main() {
   group('TextStyleToken', () {
@@ -74,10 +75,8 @@ void main() {
         $token.space.medium: 50,
       },
       textStyles: {
-        $material.textTheme.bodyText1:
-            const TextStyle(color: Colors.red, fontSize: 10),
-        $material.textTheme.bodyText2:
-            const TextStyle(color: Colors.blue, fontSize: 20),
+        $material.textTheme.bodyText1: const TextStyle(color: Colors.red, fontSize: 10),
+        $material.textTheme.bodyText2: const TextStyle(color: Colors.blue, fontSize: 20),
       },
       radii: {
         $token.radius.medium: const Radius.elliptical(10, 50),
@@ -149,8 +148,7 @@ void main() {
 
       await tester.pumpWidget(
         MixTheme(
-          data: MixThemeData(
-              textStyles: {const TextStyleToken('test'): resolver}),
+          data: MixThemeData(textStyles: {const TextStyleToken('test'): resolver}),
           child: Container(),
         ),
       );

@@ -24,6 +24,7 @@ extension SpacingExt on SpaceTokenUtil {
   SpaceToken get xsmall => const SpaceToken('space.xsmall');
   SpaceToken get small => const SpaceToken('space.small');
   SpaceToken get medium => const SpaceToken('space.medium');
+  SpaceToken get large => const SpaceToken('space.large');
 }
 
 extension TextStyleExt on TextStyleTokenUtil {

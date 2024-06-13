@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mix/mix.dart';
 
 import '../../helpers/testing_utils.dart';
+import '../../helpers/tokens_extensions.dart';
 
 void main() {
   const primaryColor = ColorToken('primary');
@@ -71,15 +72,13 @@ void main() {
           ),
         );
 
-        expect(container.padding!.horizontal / 2,
-            theme.spaces[$token.space.small]);
+        expect(container.padding!.horizontal / 2, theme.spaces[$token.space.small]);
 
         final textWidget = tester.widget<Text>(
           find.descendant(of: find.byKey(key), matching: find.byType(Text)),
         );
 
-        expect(
-            textWidget.style, theme.textStyles[$material.textTheme.bodyLarge]);
+        expect(textWidget.style, theme.textStyles[$material.textTheme.bodyLarge]);
       },
     );
 

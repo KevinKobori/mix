@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../material/material_tokens.dart';
 import 'breakpoints_token.dart';
-import 'radius_token.dart';
-import 'space_token.dart';
 
 const $material = MaterialTokens();
 const $token = MixTokens();
@@ -21,18 +19,11 @@ class MixTokens {
 
 @immutable
 class RadiusTokenUtil {
-  final small = const RadiusToken('mix.radius.small');
-  final medium = const RadiusToken('mix.radius.medium');
-  final large = const RadiusToken('mix.radius.large');
   const RadiusTokenUtil();
 }
 
 @immutable
 class SpaceTokenUtil {
-  final large = const SpaceToken('mix.space.large');
-  final medium = const SpaceToken('mix.space.medium');
-  final small = const SpaceToken('mix.space.small');
-
   const SpaceTokenUtil();
 }
 

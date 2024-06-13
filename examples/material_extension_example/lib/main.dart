@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:material_extension_example/theme/data.dart';
-import 'package:material_extension_example/theme/tokens.dart';
+import 'package:material_extension_example/theme/theme.dart';
 import 'package:mix/mix.dart';
 
 void main() {
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 34, 255)),
           useMaterial3: true,
         ),
         home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -51,8 +50,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final MixThemeData mixTheme = MixTheme.of(context);
 
+    final StyledTokens<BreakpointToken, Breakpoint> breakpoints = mixTheme.breakpoints;
+    final Breakpoint breakpointExample = breakpoints[$token.breakpoint.small]!;
+
     final StyledTokens<ColorToken, Color> colors = mixTheme.colors;
     final Color colorExample = colors[$token.color.example]!;
+    final Color colorExample2 = colors[$token.color.example2]!;
 
     final StyledTokens<RadiusToken, Radius> radii = mixTheme.radii;
     final Radius radiusExample = radii[$token.radius.example]!;
@@ -81,6 +84,11 @@ class _MyHomePageState extends State<MyHomePage> {
               Text(
                 'You have pushed the button this many times:',
                 style: textStyleExample,
+              ),
+              SizedBox(height: spaceExample),
+              Container(
+                color: colorExample2,
+                height: breakpointExample.minWidth,
               ),
               SizedBox(height: spaceExample),
               Text(
