@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../internal/compare_mixin.dart';
 import 'material/material_theme.dart';
 import 'tokens/breakpoints_token.dart';
 import 'tokens/color_token.dart';
+import 'tokens/gap_token.dart';
 import 'tokens/mix_token.dart';
 import 'tokens/radius_token.dart';
 import 'tokens/space_token.dart';
@@ -34,6 +36,9 @@ class MixTheme extends InheritedWidget {
 @immutable
 class MixThemeData with EqualityMixin {
   final StyledTokens<RadiusToken, Radius> radii;
+
+  /// [design_toolkit]
+  final StyledTokens<GapToken, Gap> gaps;
   final StyledTokens<ColorToken, Color> colors;
   final StyledTokens<TextStyleToken, TextStyle> textStyles;
   final StyledTokens<BreakpointToken, Breakpoint> breakpoints;
@@ -44,6 +49,7 @@ class MixThemeData with EqualityMixin {
     required this.colors,
     required this.breakpoints,
     required this.radii,
+    required this.gaps,
     required this.spaces,
   });
 
@@ -53,6 +59,7 @@ class MixThemeData with EqualityMixin {
           colors: const StyledTokens.empty(),
           breakpoints: const StyledTokens.empty(),
           radii: const StyledTokens.empty(),
+          gaps: const StyledTokens.empty(),
           spaces: const StyledTokens.empty(),
         );
 
@@ -62,13 +69,53 @@ class MixThemeData with EqualityMixin {
     Map<SpaceToken, double>? spaces,
     Map<TextStyleToken, TextStyle>? textStyles,
     Map<RadiusToken, Radius>? radii,
+    // Map<GapToken, Gap>? gaps,
   }) {
+    // final List<SpaceToken>? spacesKeys = spaces?.keys.toList();
+    // final List<GapToken>? gapKeys = spacesKeys?.map((element) => element).toList();
+    /// chatgpt, eu quero transformar um map de Map<SpaceToken, double>? spaces em um map de Map<GapToken, Gap>? gaps,
+    /// onde Gap é uma classe que recebe um double, exemplo: Gap(16)
+    Map<GapToken, Gap> transformSpacesToGaps(Map<SpaceToken, double>? spaces) {
+      if (spaces == null) return const {};
+
+      // final List<SpaceToken>? spacesKeys = spaces.keys.toList();
+      final Map<SpaceToken, GapToken> spaceToGapTokenMap = {};
+
+      // spaces.keys.map((element) {
+      //   spaceToGapTokenMap[element] = GapToken('gap.' + element.name);
+      // });
+
+      // // Defina o mapeamento de SpaceToken para GapToken
+      // final Map<SpaceToken, GapToken> spaceToGapTokenMap = {
+      //   const SpaceToken('small'): const GapToken('small'),
+      //   const SpaceToken('medium'): const GapToken('medium'),
+      //   const SpaceToken('large'): const GapToken('large'),
+      //   // Adicione outros mapeamentos conforme necessário
+      // };
+
+      // Converte o Map<SpaceToken, double> para Map<GapToken, Gap>
+      final finalMap = spaces.map((spaceToken, value) {
+        // final gapToken = GapToken('gap.${spaceToken.name}');
+        final gapToken = GapToken(spaceToken.name);
+        // spaceToGapTokenMap['gap.${spaceToken.name}'];
+        // spaceToGapTokenMap[spaceToken];
+        // if (gapToken != null) {
+        return MapEntry(gapToken, Gap(value));
+        // }
+        // throw Exception(
+        //     'No corresponding GapToken for SpaceToken: $spaceToken');
+      });
+      return finalMap;
+    }
+
     return MixThemeData.raw(
       textStyles: StyledTokens(textStyles ?? const {}),
       colors: StyledTokens(colors ?? const {}),
       breakpoints:
           _breakpointTokenMap.merge(StyledTokens(breakpoints ?? const {})),
       radii: StyledTokens(radii ?? const {}),
+      // gaps: StyledTokens(gaps ?? const {}),
+      gaps: StyledTokens(transformSpacesToGaps(spaces)),
       spaces: StyledTokens(spaces ?? const {}),
     );
   }
@@ -79,6 +126,7 @@ class MixThemeData with EqualityMixin {
     Map<SpaceToken, double>? spaces,
     Map<TextStyleToken, TextStyle>? textStyles,
     Map<RadiusToken, Radius>? radii,
+    Map<GapToken, Gap>? gaps,
   }) {
     return materialMixTheme.merge(
       MixThemeData(
@@ -87,6 +135,7 @@ class MixThemeData with EqualityMixin {
         spaces: spaces,
         textStyles: textStyles,
         radii: radii,
+        // gaps: gaps,
       ),
     );
   }
@@ -97,6 +146,7 @@ class MixThemeData with EqualityMixin {
     Map<SpaceToken, double>? spaces,
     Map<TextStyleToken, TextStyle>? textStyles,
     Map<RadiusToken, Radius>? radii,
+    Map<GapToken, Gap>? gaps,
   }) {
     return MixThemeData.raw(
       textStyles:
@@ -105,6 +155,7 @@ class MixThemeData with EqualityMixin {
       breakpoints:
           breakpoints == null ? this.breakpoints : StyledTokens(breakpoints),
       radii: radii == null ? this.radii : StyledTokens(radii),
+      gaps: gaps == null ? this.gaps : StyledTokens(gaps),
       spaces: spaces == null ? this.spaces : StyledTokens(spaces),
     );
   }
@@ -115,12 +166,13 @@ class MixThemeData with EqualityMixin {
       colors: colors.merge(other.colors),
       breakpoints: breakpoints.merge(other.breakpoints),
       radii: radii.merge(other.radii),
+      gaps: gaps.merge(other.gaps),
       spaces: spaces.merge(other.spaces),
     );
   }
 
   @override
-  get props => [spaces, breakpoints, colors, textStyles, radii];
+  get props => [spaces, breakpoints, colors, textStyles, radii, gaps];
 }
 
 final _breakpointTokenMap = StyledTokens({

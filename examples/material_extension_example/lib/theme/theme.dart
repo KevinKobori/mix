@@ -11,6 +11,10 @@ extension ColorTokenUtilExtension on ColorTokenUtil {
   ColorToken get example2 => const ColorToken('color.example2');
 }
 
+extension GapTokenUtilExtension on GapTokenUtil {
+  GapToken get example => const GapToken('space.example');
+}
+
 extension RadiusTokenUtilExtension on RadiusTokenUtil {
   RadiusToken get example => const RadiusToken('radius.example');
 }
@@ -33,6 +37,9 @@ final themeData = MixThemeData(
     $token.color.example: const Color.fromARGB(255, 221, 0, 255),
     $token.color.example2: const Color.fromARGB(255, 238, 255, 0),
   },
+  // gaps: {
+  //   $token.gap.example: Gap(32),
+  // },
   radii: {
     $token.radius.example: const Radius.circular(12),
   },
@@ -48,3 +55,17 @@ final themeData = MixThemeData(
     )
   },
 );
+
+// Map<String, String> exemplo  = {
+//   'chave1': 'valor1',
+//   'chave2': 'valor2',
+// };
+
+// List<String> getKeysFromMap(Map<String, String> map) {
+//   return map.keys.toList();
+// }
+
+// void main() {
+//   final list = getKeysFromMap(exemplo);
+//   print(list); // Deve imprimir: [chave1, chave2]
+// }

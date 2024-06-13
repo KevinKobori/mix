@@ -4,6 +4,8 @@
 // Automated file exports
 export '../theme/tokens/breakpoints_token.dart';
 export '../theme/tokens/color_token.dart';
+/// [design_toolkit]
+export '../theme/tokens/gap_token.dart';
 export '../theme/tokens/mix_token.dart';
 export '../theme/tokens/radius_token.dart';
 export '../theme/tokens/space_token.dart';

@@ -10,6 +10,7 @@ const $token = MixTokens();
 class MixTokens {
   final space = const SpaceTokenUtil();
   final radius = const RadiusTokenUtil();
+  final gap = const GapTokenUtil();
   final color = const ColorTokenUtil();
   final breakpoint = const BreakpointTokenUtil();
   final textStyle = const TextStyleTokenUtil();
@@ -19,11 +20,13 @@ class MixTokens {
 
 @immutable
 class RadiusTokenUtil {
+  /// [design_toolkit]
   const RadiusTokenUtil();
 }
 
 @immutable
 class SpaceTokenUtil {
+  /// [design_toolkit]
   const SpaceTokenUtil();
 }
 
@@ -44,4 +47,10 @@ class BreakpointTokenUtil {
   final medium = BreakpointToken.medium;
   final large = BreakpointToken.large;
   const BreakpointTokenUtil();
+}
+
+/// [design_toolkit]
+@immutable
+class GapTokenUtil {
+  const GapTokenUtil();
 }

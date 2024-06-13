@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mix/src/theme/tokens/gap_token.dart';
 
 import '../mix_theme.dart';
 import 'mix_token.dart';
@@ -43,5 +44,9 @@ class SpaceToken extends MixToken<double> {
     );
 
     return themeValue!;
+  }
+
+  GapToken toGap() {
+    return GapToken(name);
   }
 }

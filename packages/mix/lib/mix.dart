@@ -22,3 +22,6 @@ export 'src/theme/token_resolver.dart';
 export 'src/variants/context_variant.dart';
 export 'src/variants/variant.dart';
 export 'src/widgets/pressable/pressable_state.dart';
+/// [design_toolkit]
+export 'package:gap/gap.dart';
+
