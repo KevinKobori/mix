@@ -25,7 +25,7 @@ Style container() => Style(
       //   $box.padding.vertical.ref($token.space.xsmall),
       // ),
       ButtonType.primary(
-        $box.color.ref($token.color.primary),
+        $box.color.ref($token.color.example),
         $on.hover(
           $box.color.ref($token.color.primaryHover),
         ),
@@ -99,7 +99,7 @@ Style label() => Style(
       //   $text.style.fontSize(18),
       // ),
       ButtonType.primary(
-        $text.style.color.ref($token.color.onPrimary),
+        $text.style.color.ref($token.color.primary),
       ),
       // ButtonType.secondary(
       //   $text.style.color.ref($token.color.primaryHover),

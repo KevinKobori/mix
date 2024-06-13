@@ -4,6 +4,8 @@ import 'package:themed_button/styles/tokens.dart';
 
 final orbitTheme = MixThemeData(
   colors: {
+    $token.color.example: const Color.fromARGB(255, 221, 0, 255),
+    $token.color.example2: const Color.fromARGB(255, 0, 242, 255),
     $token.color.primary: const Color(0xff00A58E),
     $token.color.primaryHover: const Color(0xFF009580),
     $token.color.onPrimary: Colors.white,

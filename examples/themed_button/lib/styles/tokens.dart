@@ -1,6 +1,8 @@
 import 'package:mix/mix.dart';
 
 extension ColorExt on ColorTokenUtil {
+  ColorToken get example => const ColorToken('example');
+  ColorToken get example2 => const ColorToken('example2');
   ColorToken get primary => const ColorToken('primary');
   ColorToken get primaryHover => const ColorToken('primary.hover');
   ColorToken get onPrimary => const ColorToken('on.primary');

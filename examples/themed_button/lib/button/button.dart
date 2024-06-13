@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 import 'package:themed_button/button/button.style.dart' as style;
+import 'package:themed_button/styles/tokens.dart';
 
 import 'button.variants.dart';
 
@@ -40,12 +41,22 @@ class ThemedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final style = buildStyle([size, type, ...variants]);
+    final mixTheme = MixTheme.of(context);
+    final primaryColor = mixTheme.colors[$token.color.example2];
+    final radius = mixTheme.radii[$token.radius.large];
 
-    return PressableBox(
-      onPress: disabled || loading ? null : onPressed,
-      child: HBox(
-        style: style.container().applyVariant(type, size),
-        children: _buildDefaultChildren(),
+    return Container(
+      decoration: BoxDecoration(
+        color: primaryColor,
+        borderRadius: BorderRadius.all(radius!),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: PressableBox(
+        onPress: disabled || loading ? null : onPressed,
+        child: HBox(
+          style: style.container().applyVariant(type, size),
+          children: _buildDefaultChildren(),
+        ),
       ),
     );
   }
