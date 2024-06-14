@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_extension_example/theme/x_metrics_data.dart';
 import 'package:mix/mix.dart';
 
 /// TOKENS
@@ -29,7 +28,7 @@ extension TextStyleTokenUtilExtension on TextStyleTokenUtil {
 }
 
 /// THEME DATA
-final themeData = XMetricsData(
+final themeData = MixThemeData(
   breakpoints: {
     $token.breakpoint.example: const Breakpoint(minWidth: 0, maxWidth: 1024),
     $token.breakpoint.large: const Breakpoint(minWidth: 0, maxWidth: 1024),
