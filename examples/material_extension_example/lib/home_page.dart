@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:material_extension_example/theme/theme.dart';
+import 'package:material_extension_example/theme/data.dart';
 import 'package:mix/mix.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -41,9 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
     final StyledTokens<SpaceToken, double> spaces = mixTheme.spaces;
     final double spaceExample = spaces[$token.space.example]!;
 
-    final StyledTokens<GapToken, Gap> gaps = mixTheme.gaps;
-    final Gap gapExample = gaps[$token.space.example.toGap()]!;
-    // final Gap gapExample = spaces[$token.space.example]!.toGap(context);
+    // final StyledTokens<GapToken, Gap> gaps = mixTheme.gaps;
+    // final Gap gapExample = gaps[$token.space.example.gap]!;
+    final Gap gapExample = spaces[$token.space.example]!.toGap();
 
     final StyledTokens<TextStyleToken, TextStyle> textStyles =
         mixTheme.textStyles;

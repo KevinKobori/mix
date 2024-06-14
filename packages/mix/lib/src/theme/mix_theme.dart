@@ -69,53 +69,21 @@ class MixThemeData with EqualityMixin {
     Map<SpaceToken, double>? spaces,
     Map<TextStyleToken, TextStyle>? textStyles,
     Map<RadiusToken, Radius>? radii,
-    // Map<GapToken, Gap>? gaps,
+    Map<GapToken, Gap>? gaps,
   }) {
-    // final List<SpaceToken>? spacesKeys = spaces?.keys.toList();
-    // final List<GapToken>? gapKeys = spacesKeys?.map((element) => element).toList();
-    /// chatgpt, eu quero transformar um map de Map<SpaceToken, double>? spaces em um map de Map<GapToken, Gap>? gaps,
-    /// onde Gap é uma classe que recebe um double, exemplo: Gap(16)
-    Map<GapToken, Gap> transformSpacesToGaps(Map<SpaceToken, double>? spaces) {
-      if (spaces == null) return const {};
-
-      // final List<SpaceToken>? spacesKeys = spaces.keys.toList();
-      final Map<SpaceToken, GapToken> spaceToGapTokenMap = {};
-
-      // spaces.keys.map((element) {
-      //   spaceToGapTokenMap[element] = GapToken('gap.' + element.name);
-      // });
-
-      // // Defina o mapeamento de SpaceToken para GapToken
-      // final Map<SpaceToken, GapToken> spaceToGapTokenMap = {
-      //   const SpaceToken('small'): const GapToken('small'),
-      //   const SpaceToken('medium'): const GapToken('medium'),
-      //   const SpaceToken('large'): const GapToken('large'),
-      //   // Adicione outros mapeamentos conforme necessário
-      // };
-
-      // Converte o Map<SpaceToken, double> para Map<GapToken, Gap>
-      final finalMap = spaces.map((spaceToken, value) {
-        // final gapToken = GapToken('gap.${spaceToken.name}');
-        final gapToken = GapToken(spaceToken.name);
-        // spaceToGapTokenMap['gap.${spaceToken.name}'];
-        // spaceToGapTokenMap[spaceToken];
-        // if (gapToken != null) {
-        return MapEntry(gapToken, Gap(value));
-        // }
-        // throw Exception(
-        //     'No corresponding GapToken for SpaceToken: $spaceToken');
-      });
-      return finalMap;
-    }
-
     return MixThemeData.raw(
       textStyles: StyledTokens(textStyles ?? const {}),
       colors: StyledTokens(colors ?? const {}),
       breakpoints:
           _breakpointTokenMap.merge(StyledTokens(breakpoints ?? const {})),
       radii: StyledTokens(radii ?? const {}),
-      // gaps: StyledTokens(gaps ?? const {}),
-      gaps: StyledTokens(transformSpacesToGaps(spaces)),
+
+      /// [design_toolkit]
+      gaps: StyledTokens((gaps == null || gaps.isEmpty)
+          ? spaces?.map((spaceToken, value) =>
+                  MapEntry(GapToken(spaceToken.name), Gap(value))) ??
+              {}
+          : gaps),
       spaces: StyledTokens(spaces ?? const {}),
     );
   }

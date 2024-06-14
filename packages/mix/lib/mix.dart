@@ -3,6 +3,8 @@
 
 library mix;
 
+import 'package:gap/gap.dart';
+
 // Automated file exports
 export 'src/attributes/color/color_directives.dart';
 export 'src/exports/attributes.dart';
@@ -24,4 +26,3 @@ export 'src/variants/variant.dart';
 export 'src/widgets/pressable/pressable_state.dart';
 /// [design_toolkit]
 export 'package:gap/gap.dart';
-

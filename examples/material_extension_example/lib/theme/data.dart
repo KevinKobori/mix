@@ -1,34 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:material_extension_example/theme/x_metrics_data.dart';
 import 'package:mix/mix.dart';
 
 /// TOKENS
 extension BreakpointTokenUtilExtension on BreakpointTokenUtil {
-  BreakpointToken get example => const BreakpointToken('breakpoint.example');
+  BreakpointToken get example => const BreakpointToken('example');
 }
 
 extension ColorTokenUtilExtension on ColorTokenUtil {
-  ColorToken get example => const ColorToken('color.example');
-  ColorToken get example2 => const ColorToken('color.example2');
+  ColorToken get example => const ColorToken('example');
+  ColorToken get example2 => const ColorToken('example2');
 }
 
-extension GapTokenUtilExtension on GapTokenUtil {
-  GapToken get example => const GapToken('space.example');
-}
+// extension GapTokenUtilExtension on GapTokenUtil {
+//   GapToken get example => const GapToken('example');
+// }
 
 extension RadiusTokenUtilExtension on RadiusTokenUtil {
-  RadiusToken get example => const RadiusToken('radius.example');
+  RadiusToken get example => const RadiusToken('example');
 }
 
 extension SpaceTokenUtilExtension on SpaceTokenUtil {
-  SpaceToken get example => const SpaceToken('space.example');
+  SpaceToken get example => const SpaceToken('example');
 }
 
 extension TextStyleTokenUtilExtension on TextStyleTokenUtil {
-  TextStyleToken get example => const TextStyleToken('textStyle.example');
+  TextStyleToken get example => const TextStyleToken('example');
 }
 
 /// THEME DATA
-final themeData = MixThemeData(
+final themeData = XMetricsData(
   breakpoints: {
     $token.breakpoint.example: const Breakpoint(minWidth: 0, maxWidth: 1024),
     $token.breakpoint.large: const Breakpoint(minWidth: 0, maxWidth: 1024),
@@ -37,9 +38,9 @@ final themeData = MixThemeData(
     $token.color.example: const Color.fromARGB(255, 221, 0, 255),
     $token.color.example2: const Color.fromARGB(255, 238, 255, 0),
   },
-  // gaps: {
-  //   $token.gap.example: Gap(32),
-  // },
+  gaps: {
+    // $token.gap.example: Gap(32),
+  },
   radii: {
     $token.radius.example: const Radius.circular(12),
   },
