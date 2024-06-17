@@ -28,7 +28,7 @@ extension TextStyleTokenUtilExtension on TextStyleTokenUtil {
 }
 
 /// THEME DATA
-final themeData = MixThemeData(
+final themeData = MixThemeData.withMaterial(
   breakpoints: {
     $token.breakpoint.example: const Breakpoint(minWidth: 0, maxWidth: 1024),
     $token.breakpoint.large: const Breakpoint(minWidth: 0, maxWidth: 1024),
@@ -37,7 +37,7 @@ final themeData = MixThemeData(
     $token.color.example: const Color.fromARGB(255, 221, 0, 255),
     $token.color.example2: const Color.fromARGB(255, 238, 255, 0),
   },
-  gaps: {
+  gaps: const {
     // $token.gap.example: Gap(32),
   },
   radii: {

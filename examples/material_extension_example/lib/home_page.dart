@@ -27,13 +27,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final MixThemeData mixTheme = MixTheme.of(context);
 
-    final StyledTokens<BreakpointToken, Breakpoint> breakpoints =
-        mixTheme.breakpoints;
+    final StyledTokens<BreakpointToken, Breakpoint> breakpoints = mixTheme.breakpoints;
     final Breakpoint breakpointExample = breakpoints[$token.breakpoint.small]!;
 
     final StyledTokens<ColorToken, Color> colors = mixTheme.colors;
     final Color colorExample = colors[$token.color.example]!;
     final Color colorExample2 = colors[$token.color.example2]!;
+    final Color materialPrimary = colors[$material.colorScheme.primary]!;
 
     final StyledTokens<RadiusToken, Radius> radii = mixTheme.radii;
     final Radius radiusExample = radii[$token.radius.example]!;
@@ -45,8 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // final Gap gapExample = gaps[$token.space.example.gap]!;
     final Gap gapExample = spaces[$token.space.example]!.toGap();
 
-    final StyledTokens<TextStyleToken, TextStyle> textStyles =
-        mixTheme.textStyles;
+    final StyledTokens<TextStyleToken, TextStyle> textStyles = mixTheme.textStyles;
     final TextStyle textStyleExample = textStyles[$token.textStyle.example]!;
 
     return Scaffold(
@@ -70,7 +69,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SizedBox(height: spaceExample),
               Container(
-                color: colorExample2,
+                // color: colorExample2,
+                color: materialPrimary,
                 height: breakpointExample.minWidth,
               ),
               gapExample,
